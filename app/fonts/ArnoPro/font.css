@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Arno Pro';
+  src: url('Arno Pro.eot');
+  src: url('Arno Pro.woff2') format('woff2'),
+       url('Arno Pro.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ArnoPro-Regular';
+  src: url('ArnoPro-Regular.woff') format('woff'),
+       url('ArnoPro-Regular.ttf') format('truetype'),
+       url('ArnoPro-Regular.svg#ArnoPro-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+

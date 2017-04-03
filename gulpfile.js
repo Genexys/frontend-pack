@@ -31,7 +31,7 @@ var path = {
         fonts: 'app/fonts/**/*.*'
     },
     watch: {
-        html: 'app/**/*.html',
+        html: 'app/**/*.pug',
         js: 'app/js/**/*.js',
         style: 'app/style/**/*.scss',
         img: 'app/img/**/*.*',
@@ -60,7 +60,7 @@ gulp.task('clean', function (cb) {
 
 gulp.task('html:build', function () {
     gulp.src(path.src.html)
-        .pipe(pug({pretty: true}))
+        .pipe(pug({pretty: false}))
         .pipe(gulp.dest(path.build.html))
         .pipe(reload({stream: true}));
 });
@@ -69,7 +69,7 @@ gulp.task('js:build', function () {
     gulp.src(path.src.js)
         .pipe(rigger())
         .pipe(sourcemaps.init())
-        // .pipe(uglify())
+        .pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.build.js))
         .pipe(reload({stream: true}));
