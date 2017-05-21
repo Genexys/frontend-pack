@@ -1,8 +1,13 @@
 'use strict';
 
-var gulp = require('gulp'),
+var postcss = require('gulp-postcss'),
+    gulp = require('gulp'),
     watch = require('gulp-watch'),
-    prefixer = require('gulp-autoprefixer'),
+    autoprefixer = require('autoprefixer'),
+    cssnano = require('cssnano'),
+    cssnext = require('postcss-cssnext'),
+    stylelint = require('stylelint'),
+    configStyle = require('stylelint-config-standard'),
     uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
     pug = require('gulp-pug'),
@@ -69,23 +74,23 @@ gulp.task('js:build', function () {
     gulp.src(path.src.js)
         .pipe(rigger())
         .pipe(sourcemaps.init())
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.build.js))
         .pipe(reload({stream: true}));
 });
 
 gulp.task('style:build', function () {
+    var plugins = [
+        //autoprefixer({browsers: ['last 2 version']}),
+        cssnano(),
+        cssnext,
+        stylelint(configStyle),
+    ];
     gulp.src(path.src.style)
         .pipe(sourcemaps.init())
-        .pipe(sass({
-            includePaths: ['app/style/'],
-            outputStyle: 'compressed',
-            sourceMap: true,
-            errLogToConsole: true
-        }))
-        .pipe(prefixer())
-        .pipe(cssmin())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(postcss(plugins))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.build.css))
         .pipe(reload({stream: true}));

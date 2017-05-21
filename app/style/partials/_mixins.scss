@@ -68,18 +68,18 @@
 // viewports
 // =============================================================================
 
-@function gh($target) {   
-	$vh-context: (1080 * 0.01) * 1px;   
-	@return ($target / $vh-context) * 1vh; 
+@function gh($target) {
+	$vh-context: (1080 * 0.01) * 1px;
+	@return ($target / $vh-context) * 1vh;
 }
 
-@function gw($target) {   
-	$vw-context: (1920 * 0.01) * 1px;   
-	@return ($target / $vw-context) * 1vw; 
+@function gw($target) {
+	$vw-context: (1920 * 0.01) * 1px;
+	@return ($target / $vw-context) * 1vw;
 }
 
 @mixin vedeoRespon {
-	
+
 	.embed-responsive {
 		position: relative;
 		display: block;

@@ -1,9 +1,7 @@
-@import "bower_components/fancybox/dist/jquery.fancybox.min.css";
+@import "base/reset";
+@import "var";
+@import "mixins";
+@import "base/fonts";
+@import "sections/header";
 
-@import "base/_reset";
-@import "_var";
-@import "_mixins";
-@import "base/_fonts";
-@import "sections/_header";
-
-@import "_media";
+@import "media";
